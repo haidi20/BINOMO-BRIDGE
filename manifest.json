@@ -1,0 +1,30 @@
+{
+  "author": "https://bukanrobot.com",
+  "manifest_version": 2,
+  "name": "Bukanrobot Binomo Bridge",
+  "version": "1.0",
+  
+  "icons": {
+	"48":"images/48.png",
+    "128": "images/128.png"
+  },
+  "content_scripts": [
+    {
+      "js": [ "content.js", "popup.js"],
+	  "matches": [ "https://*.binomo-webtrade.com/*" ],
+	  "run_at": "document_end"
+    }
+  ],
+  "description": "A robot for automating trading on Binomo",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [ "tabs", "activeTab", "storage", "cookies", "webNavigation", "https://*.binomo-webtrade.com/*" ],
+  "browser_action": {
+	"default_title": "Binomo Bridge",
+    "default_icon": "images/48.png",
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [ "/content.js" ],
+  "content_security_policy":"script-src 'self' https://apis.google.com; object-src 'self'"
+}
